@@ -1,4 +1,5 @@
 import os from "os"
+import { FAILED_ERROR } from "../helpers/errors";
 
 
 export const handleOS = (action) => {
@@ -9,12 +10,26 @@ export const handleOS = (action) => {
             break;
         case "--cpus":
         case "--CPUS":
-            const res = os.cpus().map((elem)=>{
-                
-            })
-            console.log(os.cpus().length);
+            const res = os.cpus().map((elem)=>({
+                Model:elem.model,
+                'Clock rate':`${elem.speed/1000} GHz`
+            }))
+            console.log(`Amount of CPUS: ${os.cpus().length}`);
+            console.table(res);
+            break;
+        case "--homedir":
+        case "--HOMEDIR":
+            console.log(`Current home directory: ${os.homedir()}`);
+            break;
+        case "--username":
+        case "--USERNAME":
+            console.log(`Current system user name: ${os.userInfo().username}`);
+            break;
+        case "--architecture":
+        case "--architecture":
+            console.log(`CPU architecture : ${process.arch}`);
             break;
         default:
-            console.log(`Sorry, we are out of ${expr}.`);
+            console.log(FAILED_ERROR);
     }
 }
