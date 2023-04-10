@@ -1,1 +1,0 @@
-export const FAILED_ERROR = 'Operation failed'

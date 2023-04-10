@@ -1,5 +1,4 @@
 import os from "os"
-import { FAILED_ERROR } from "../helpers/errors";
 
 
 export const handleOS = (action) => {
@@ -26,10 +25,10 @@ export const handleOS = (action) => {
             console.log(`Current system user name: ${os.userInfo().username}`);
             break;
         case "--architecture":
-        case "--architecture":
+        case "--ARCHITECTURE":
             console.log(`CPU architecture : ${process.arch}`);
             break;
         default:
-            console.log(FAILED_ERROR);
+            console.log('Operation failed');
     }
 }
