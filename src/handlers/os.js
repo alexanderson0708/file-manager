@@ -1,4 +1,5 @@
 import os from "os"
+import { FAILED_ERROR } from "../helpers/checkLine.js";
 
 
 export const handleOS = (action) => {
@@ -29,6 +30,6 @@ export const handleOS = (action) => {
             console.log(`CPU architecture : ${process.arch}`);
             break;
         default:
-            console.log('Operation failed');
+            console.log(FAILED_ERROR);
     }
 }

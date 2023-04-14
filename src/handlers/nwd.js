@@ -1,12 +1,16 @@
 import { readdir} from 'node:fs/promises';
+import { getPath, isDirectory } from '../helpers/index.js';
+import { FAILED_ERROR } from '../helpers/checkLine.js';
 
 
 export const handleUp = async () => {
     process.chdir('..')
 }
 
-export const handleCd = async (path) => {
-    process.chdir(path)
+export const handleCd = async (rawPath) => {
+    isDirectory(getPath(rawPath)) ? 
+    process.chdir(getPath(rawPath)) : 
+    console.log(`${FAILED_ERROR}: '${rawPath}' is not a directory`);
 }
 
 export const handleLs = async () => {
